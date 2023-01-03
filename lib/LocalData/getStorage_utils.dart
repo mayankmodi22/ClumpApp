@@ -7,8 +7,13 @@ class GetStorageutils {
     box.write(key, value);
   }
 
-  static String getValue({required String key}) {
+  static getValue({required String key}) {
     final box = GetStorage();
     return box.read(KeyStorage.loginUser);
+  }
+
+  static userIFNull({required String key, required String value}) {
+    final box = GetStorage();
+    box.writeIfNull(KeyStorage.loginUser, value);
   }
 }

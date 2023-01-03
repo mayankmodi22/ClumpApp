@@ -25,19 +25,20 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   }
 
   callScreen() async {
-    String? data;
-    try {
-      data = GetStorageutils.getValue(key: KeyStorage.loginUser);
-    } catch (e) {}
+    GetStorageutils.userIFNull(key: KeyStorage.loginUser, value: 'UnActive');
 
     Future.delayed(const Duration(seconds: 2), () async {
-      if (data!.isEmpty) {
-        Get.offAllNamed(AppRoutes.login);
-      } else {
-        print("::::::::::::::::::::::::::::::::::" + data.toString());
-        Get.offAllNamed(AppRoutes.dashboard);
-      }
+      redirect();
     });
+  }
+
+  redirect() {
+    var data = GetStorageutils.getValue(key: KeyStorage.loginUser);
+    if (data == 'UnActive') {
+      Get.offAllNamed(AppRoutes.login);
+    } else {
+      Get.offAllNamed(AppRoutes.dashboard);
+    }
   }
 
   @override
