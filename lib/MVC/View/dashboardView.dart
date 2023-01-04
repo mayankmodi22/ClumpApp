@@ -118,7 +118,7 @@ class DashboardView extends GetView<DashboardController> {
                                       child: Text(
                                         controller.userModel.value.data?.user
                                                 ?.fullName ??
-                                            "",
+                                            "GAURAV VEKARIYA",
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
@@ -132,7 +132,7 @@ class DashboardView extends GetView<DashboardController> {
                                       child: Text(
                                         controller.userModel.value.data?.user
                                                 ?.userName ??
-                                            "",
+                                            "ABC",
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
