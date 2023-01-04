@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clump_app/MVC/Controller/dashboardController.dart';
 import 'package:clump_app/MVC/Model/categortModel.dart';
 import 'package:clump_app/MVC/View/drawerView.dart';
 import 'package:clump_app/MVC/View/editProfileView.dart';
@@ -6,26 +7,20 @@ import 'package:clump_app/MVC/View/leadsView.dart';
 import 'package:clump_app/Utils/colorsConst.dart';
 import 'package:clump_app/Utils/fontConst.dart';
 import 'package:clump_app/Utils/imageConst.dart';
-import 'package:clump_app/Utils/stringConst.dart';
-import 'package:clump_app/widget/borderWidget.dart';
 import 'package:clump_app/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'signupView.dart';
 
-class DashboardView extends StatefulWidget {
-  const DashboardView({super.key});
+class DashboardView extends GetView<DashboardController> {
+  DashboardView({super.key});
 
-  @override
-  State<DashboardView> createState() => _DashboardViewState();
-}
-
-class _DashboardViewState extends State<DashboardView> {
   TextEditingController companyNameController = TextEditingController();
+
   TextEditingController companyAddressController = TextEditingController();
+
   List<CategoryModel> listCategory = [
     CategoryModel(image: categoryfillterIcon, title: "Leads"),
     CategoryModel(image: categorTaskIcon, title: "Tasks"),
@@ -87,7 +82,9 @@ class _DashboardViewState extends State<DashboardView> {
                               key: UniqueKey(),
                               maxHeightDiskCache: 800,
                               maxWidthDiskCache: 800,
-                              imageUrl: profileNetwork,
+                              imageUrl: controller.userModel.value.data?.user
+                                      ?.profileImage ??
+                                  "",
                               height: 69.35.h,
                               fit: BoxFit.cover,
                               width: 69.35.h,
@@ -116,19 +113,34 @@ class _DashboardViewState extends State<DashboardView> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "GAURAV VEKARIYA",
-                                      style: TextStyle(
-                                          fontSize: 18.sp,
-                                          fontFamily: fontRobotoDisplayBold,
-                                          color: colorFFFFF),
+                                    SizedBox(
+                                      width: 210.w,
+                                      child: Text(
+                                        controller.userModel.value.data?.user
+                                                ?.fullName ??
+                                            "",
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 18.sp,
+                                            fontFamily: fontRobotoDisplayBold,
+                                            color: colorFFFFF),
+                                      ),
                                     ),
-                                    Text(
-                                      "ABC",
-                                      style: TextStyle(
-                                          fontSize: 14.sp,
-                                          fontFamily: fontRobotoDisplayRegular,
-                                          color: colorFFFFF),
+                                    SizedBox(
+                                      width: 210.w,
+                                      child: Text(
+                                        controller.userModel.value.data?.user
+                                                ?.userName ??
+                                            "",
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 14.sp,
+                                            fontFamily:
+                                                fontRobotoDisplayRegular,
+                                            color: colorFFFFF),
+                                      ),
                                     )
                                   ],
                                 ),

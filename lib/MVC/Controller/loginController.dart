@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:clump_app/LocalData/GetStorage_utils.dart';
 import 'package:clump_app/LocalData/keyStorage.dart';
 import 'package:clump_app/MVC/Model/baseModel.dart';
+import 'package:clump_app/MVC/Model/userModel.dart';
 import 'package:clump_app/Network/api_endpoint.dart';
 import 'package:clump_app/Network/api_response.dart';
 import 'package:clump_app/Routes/appRoutes.dart';
@@ -33,7 +34,7 @@ class LoginController extends GetxController {
         if (value.statusCode == 200) {
           Map<String, dynamic> userModel = json.decode(value.body);
           BaseModel model = BaseModel.fromJson(userModel);
-          GetStorageutils.setString(key: KeyStorage.loginUser, value: 'active');
+          GetStorageutils.setString(key: KeyStorage.user, value: value.body);
 
           Get.offAllNamed(AppRoutes.dashboard);
         } else {

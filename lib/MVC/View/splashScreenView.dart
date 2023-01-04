@@ -25,7 +25,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   }
 
   callScreen() async {
-    GetStorageutils.userIFNull(key: KeyStorage.loginUser, value: 'UnActive');
+    GetStorageutils.userIFNull(key: KeyStorage.user, value: 'UnActive');
 
     Future.delayed(const Duration(seconds: 2), () async {
       redirect();
@@ -33,7 +33,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   }
 
   redirect() {
-    var data = GetStorageutils.getValue(key: KeyStorage.loginUser);
+    var data = GetStorageutils.getValue(key: KeyStorage.user);
     if (data == 'UnActive') {
       Get.offAllNamed(AppRoutes.login);
     } else {

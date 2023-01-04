@@ -107,7 +107,7 @@ class _CustomDrowerState extends State<CustomDrower> {
                 ),
                 onTap: () {
                   GetStorageutils.setString(
-                      key: KeyStorage.loginUser, value: 'UnActive');
+                      key: KeyStorage.user, value: 'UnActive');
 
                   Get.offAllNamed(AppRoutes.login);
                 },

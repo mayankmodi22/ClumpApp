@@ -37,7 +37,7 @@ class SignUpController extends GetxController {
         if (value.statusCode == 200) {
           Map<String, dynamic> userModel = json.decode(value.body);
           BaseModel model = BaseModel.fromJson(userModel);
-          GetStorageutils.setString(key: KeyStorage.loginUser, value: 'active');
+          GetStorageutils.setString(key: KeyStorage.user, value: value.body);
 
           Get.offAllNamed(AppRoutes.dashboard);
         } else {

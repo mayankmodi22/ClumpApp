@@ -1,3 +1,3 @@
 class KeyStorage {
-  static const loginUser = "UserKey";
+  static const user = "UserKey";
 }

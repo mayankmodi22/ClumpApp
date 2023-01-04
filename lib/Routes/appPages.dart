@@ -1,3 +1,4 @@
+import 'package:clump_app/MVC/Binding/dashboardBinding.dart';
 import 'package:clump_app/MVC/Binding/loginBinding.dart';
 import 'package:clump_app/MVC/Binding/signupBinding.dart';
 import 'package:clump_app/MVC/Controller/loginController.dart';
@@ -27,9 +28,9 @@ class AppPages {
         page: () => SignUpView(),
         binding: SignUpBinding()),
     GetPage(
-      name: AppRoutes.dashboard,
-      page: () => DashboardView(),
-    ),
+        name: AppRoutes.dashboard,
+        page: () => DashboardView(),
+        binding: DashboardBinding()),
     GetPage(
       name: AppRoutes.companyDetails,
       page: () => const CompanyDetailsView(),
