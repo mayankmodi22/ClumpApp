@@ -72,7 +72,7 @@ class SignUpView extends GetView<SignUpController> {
                             textFieldPhone(
                                 controller: controller.contactController.value,
                                 validator: (val) {
-                                  if (!val!.isPhoneNumber) {
+                                  if (val!.length != 10) {
                                     return 'Enter valid Contact No';
                                   }
                                   return null;
